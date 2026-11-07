@@ -1,4 +1,4 @@
-# docx-to-html-conv
+# Docx to HTML Converter
 
 Convert Word (`.docx`) documents into paginated, self-contained HTML files —
 one HTML file per page — with embedded fonts, extracted images, and an
