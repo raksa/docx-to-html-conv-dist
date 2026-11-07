@@ -1,4 +1,4 @@
-# docx-to-html
+# docx-to-html-conv
 
 Convert Word (`.docx`) documents into paginated, self-contained HTML files —
 one HTML file per page — with embedded fonts, extracted images, and an
@@ -10,17 +10,31 @@ to the reference implementation (apart from the `exportedAt` timestamp).
 ## Install
 
 ```bash
-npm install docx-to-html
+npm install docx-to-html-conv
 ```
 
 Requires Node.js >= 18.
+
+### Releasing to npm
+
+For maintainers, from a clean `main`:
+
+```bash
+npm test
+npm pack --dry-run                          # check which files go in the package
+npm whoami                                  # run `npm login` if this fails
+npm version patch --tag-version-prefix=""   # or minor / major
+npm publish
+git push origin main --follow-tags
+npm view docx-to-html-conv version          # confirm the new version is live
+```
 
 ## Usage
 
 ESM:
 
 ```js
-import { exportDocx, getPagesCount } from 'docx-to-html';
+import { exportDocx, getPagesCount } from 'docx-to-html-conv';
 
 exportDocx('document.docx', 'out/document');
 console.log(getPagesCount('document.docx'));
@@ -29,7 +43,7 @@ console.log(getPagesCount('document.docx'));
 CommonJS:
 
 ```js
-const { exportDocx, getPagesCount } = require('docx-to-html');
+const { exportDocx, getPagesCount } = require('docx-to-html-conv');
 
 exportDocx('document.docx', 'out/document');
 ```
@@ -37,7 +51,7 @@ exportDocx('document.docx', 'out/document');
 TypeScript (declarations ship with the package — nothing extra to install):
 
 ```ts
-import { exportDocx, getPagesCount, getVersion } from 'docx-to-html';
+import { exportDocx, getPagesCount, getVersion } from 'docx-to-html-conv';
 
 const pages: number = getPagesCount('document.docx');
 exportDocx('document.docx', 'out/document');
@@ -46,7 +60,7 @@ exportDocx('document.docx', 'out/document');
 ## CLI
 
 ```bash
-npx docx-to-html --file <input.docx> [--out <output-folder>]
+npx docx-to-html-conv --file <input.docx> [--out <output-folder>]
 ```
 
 - `--file` — path to the `.docx` file (required)

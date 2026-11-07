@@ -22,7 +22,7 @@ function main(argv) {
 
   const inputPath = parsed.get('--file');
   if (inputPath == null || inputPath === '') {
-    console.error('Usage: docx-to-html --file <input.docx> [--out <output-folder>]');
+    console.error('Usage: docx-to-html-conv --file <input.docx> [--out <output-folder>]');
     return 1;
   }
 

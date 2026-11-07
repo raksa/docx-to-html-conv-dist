@@ -1,5 +1,5 @@
 {
-  "name": "docx-to-html",
+  "name": "docx-to-html-conv",
   "version": "1.0.1",
   "description": "Convert Word (.docx) documents to paginated, self-contained HTML files (Node.js port of the C# DocxToHtml tool).",
   "keywords": [
@@ -42,6 +42,6 @@
     "fflate": "^0.8.3"
   },
   "bin": {
-    "docx-to-html": "./bin/cli.js"
+    "docx-to-html-conv": "./bin/cli.js"
   }
 }
