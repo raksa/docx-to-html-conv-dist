@@ -126,7 +126,7 @@ module.exports = {
     const fontName = fonts != null ? firstNonNull(attr(fonts, 'ascii'), attr(fonts, 'hAnsi')) : null;
     if (fontName != null) {
       this._allFonts.add(fontName);
-      parts.push(`font-family:'${fontName}'`);
+      parts.push(`font-family:'${fontName}'${this.defaultFontFamiliesCss(',', '')}`);
     }
 
     // Highlight

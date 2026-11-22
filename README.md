@@ -60,17 +60,20 @@ exportDocx('document.docx', 'out/document');
 ## CLI
 
 ```bash
-npx docx-to-html-conv --file <input.docx> [--out <output-folder>]
+npx docx-to-html-conv --file <input.docx> [--out <output-folder>] [--default-font-family <family>]
 ```
 
 - `--file` — path to the `.docx` file (required)
 - `--out` — destination folder (default: `out/<document-name>`)
+- `--default-font-family` — the font family (or comma-separated families) of
+  the page the document is shown in (optional). Text in a face the computer
+  lacks is drawn in it rather than in the browser's generic font.
 
 ## API
 
 | Export | Description |
 | --- | --- |
-| `exportDocx(docxPath, outputDirectory)` | Convert a document; creates the output folder if missing. |
+| `exportDocx(docxPath, outputDirectory, defaultFontFamily?)` | Convert a document; creates the output folder if missing. `defaultFontFamily` is the host page's font, used for any face the computer lacks. |
 | `getPagesCount(docxPath)` | Number of pages the conversion would produce. |
 | `getVersion()` | Tool version, as written into `info.json`. |
 | `DocxConverter` | The converter class, for driving a run directly. |

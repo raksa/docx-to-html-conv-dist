@@ -9,9 +9,17 @@
  *
  * @param docxPath Path to the input .docx file.
  * @param outputDirectory Folder to write HTML and assets into.
+ * @param defaultFontFamily The host page's default font family (or
+ *   comma-separated families). It goes in front of the generic family that
+ *   closes the heading and body font lists and after the face a run names, so
+ *   text in a face the computer lacks is drawn in it.
  * @throws If either argument is blank, or the input file does not exist.
  */
-export declare function exportDocx(docxPath: string, outputDirectory: string): void;
+export declare function exportDocx(
+  docxPath: string,
+  outputDirectory: string,
+  defaultFontFamily?: string | null
+): void;
 
 /**
  * Count the pages {@link exportDocx} would produce, without converting.
@@ -36,7 +44,8 @@ export declare class DocxConverter {
     title: string,
     toolName: string,
     toolVersion: string,
-    exportedAt: string
+    exportedAt: string,
+    defaultFontFamily?: string | null
   ): void;
 
   countPages(mainPart: unknown): number;

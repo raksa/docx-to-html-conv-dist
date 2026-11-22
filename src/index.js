@@ -25,8 +25,11 @@ function formatExportedAt(date) {
  * Convert a .docx document to paginated HTML assets.
  * @param {string} docxPath Path to the input .docx file.
  * @param {string} outputDirectory Folder to write HTML and assets (created if missing).
+ * @param {string|null} defaultFontFamily The host page's default font family (or comma-separated families), put in
+ *   front of the generic family that closes the heading and body font lists and after the face a run names, so a
+ *   face the computer lacks falls to it; null to leave the lists as they are.
  */
-function exportDocx(docxPath, outputDirectory) {
+function exportDocx(docxPath, outputDirectory, defaultFontFamily = null) {
   if (docxPath == null || String(docxPath).trim() === '') throw new Error('docxPath is required.');
   if (outputDirectory == null || String(outputDirectory).trim() === '')
     throw new Error('outputDirectory is required.');
@@ -49,11 +52,12 @@ function exportDocx(docxPath, outputDirectory) {
 
   console.log(`Input:  ${docxPath}`);
   console.log(`Output: ${outputDirectory}`);
+  if (defaultFontFamily != null && String(defaultFontFamily).trim() !== '') console.log(`Default font: ${defaultFontFamily}`);
 
   const exportedAt = formatExportedAt(new Date());
 
   const converter = new DocxConverter();
-  converter.run(mainPart, outputDirectory, docxPath, title, ToolName, ToolVersion, exportedAt);
+  converter.run(mainPart, outputDirectory, docxPath, title, ToolName, ToolVersion, exportedAt, defaultFontFamily);
 }
 
 /**

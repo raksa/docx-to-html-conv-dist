@@ -24,7 +24,7 @@ module.exports = {
     );
     sb.appendLine('.page-footer p { margin-bottom: 0; }');
     sb.appendLine(
-      `h1, h2, h3, h4, h5, h6 { font-family: '${encode(this._themeHeadingFont)}', 'Calibri Light', 'Calibri', sans-serif; margin-bottom: 0; }`
+      `h1, h2, h3, h4, h5, h6 { font-family: '${encode(this._themeHeadingFont)}', 'Calibri Light', 'Calibri', ${this.defaultFontFamiliesCss('', ', ')}sans-serif; margin-bottom: 0; }`
     );
     sb.appendLine('h1 { font-size: 16pt; color: #2F5496; margin-top: 12pt; font-weight: normal; }');
     sb.appendLine('h2 { font-size: 13pt; color: #2F5496; margin-top: 2pt; font-weight: normal; }');
@@ -54,7 +54,7 @@ module.exports = {
     sb.appendLine(`<title>${encode(title)} – Page ${pageNumber}</title>`);
     sb.appendLine('</head>');
     sb.appendLine(
-      `<body style="font-family: '${encode(this._themeBodyFont)}', 'Cambria', 'Georgia', serif; font-size: 11pt; line-height: 1.15; color: #000; width: ${f0(dims.widthPx)}px; height: ${f0(dims.heightPx)}px; overflow: hidden; margin: 0; padding: 0; position: relative;">`
+      `<body style="font-family: '${encode(this._themeBodyFont)}', 'Cambria', 'Georgia', ${this.defaultFontFamiliesCss('', ', ')}serif; font-size: 11pt; line-height: 1.15; color: #000; width: ${f0(dims.widthPx)}px; height: ${f0(dims.heightPx)}px; overflow: hidden; margin: 0; padding: 0; position: relative;">`
     );
     sb.appendLine('<style>');
     sb.append(css);

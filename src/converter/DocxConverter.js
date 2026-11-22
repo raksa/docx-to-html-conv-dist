@@ -29,6 +29,10 @@ class DocxConverter {
     // Family names of fonts embedded in the DOCX.
     this._embeddedFontFamilyNames = new CISet();
 
+    // The host page's default font families: put in front of the generic family that closes the
+    // heading and body font lists, and after the face a run names. Empty unless a run is given one.
+    this._defaultFontFamilies = [];
+
     // Theme fonts (defaults match the C# converter's fallbacks).
     this._themeBodyFont = 'Cambria';
     this._themeHeadingFont = 'Calibri Light';

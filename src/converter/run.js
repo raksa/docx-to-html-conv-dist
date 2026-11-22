@@ -24,8 +24,9 @@ function contentChildren(body) {
 }
 
 module.exports = {
-  run(mainPart, outputDir, inputPath, title, toolName, toolVersion, exportedAt) {
+  run(mainPart, outputDir, inputPath, title, toolName, toolVersion, exportedAt, defaultFontFamily = null) {
     this.resetRunState(outputDir);
+    this.setDefaultFontFamilies(defaultFontFamily);
 
     fs.mkdirSync(path.join(outputDir, 'fonts'), { recursive: true });
     fs.mkdirSync(path.join(outputDir, 'images'), { recursive: true });

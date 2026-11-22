@@ -22,7 +22,7 @@ function main(argv) {
 
   const inputPath = parsed.get('--file');
   if (inputPath == null || inputPath === '') {
-    console.error('Usage: docx-to-html-conv --file <input.docx> [--out <output-folder>]');
+    console.error('Usage: docx-to-html-conv --file <input.docx> [--out <output-folder>] [--default-font-family <family>]');
     return 1;
   }
 
@@ -32,8 +32,10 @@ function main(argv) {
       ? outVal
       : path.join('out', path.basename(inputPath, path.extname(inputPath)));
 
+  const defaultFontFamily = parsed.has('--default-font-family') ? parsed.get('--default-font-family') : null;
+
   try {
-    exportDocx(inputPath, outputDir);
+    exportDocx(inputPath, outputDir, defaultFontFamily);
   } catch (ex) {
     console.error(ex.message);
     return 1;
